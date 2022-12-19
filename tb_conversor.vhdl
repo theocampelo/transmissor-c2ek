@@ -24,7 +24,7 @@ architecture test of tb_conversor is
         );
     end component;
 
-    component conversorC2EK is
+    component conversor is
         port(
             b   : in  std_logic_vector(4 downto 0);
             e   : out std_logic_vector(4 downto 0);
@@ -39,28 +39,23 @@ architecture test of tb_conversor is
     signal s_b, s_e : std_logic_vector(4 downto 0);
     signal s_sel, s_err : std_logic;
 
-    -- sinais para as saídas convertidas
-    signal s_out_C2, s_out_EK   : std_logic_vector(4 downto 0);
-    signal s_out_ERR, s_out_sig : std_logic;
-
 begin 
 
     -- mapeamento/conexões das portas
-    u_mux2x6   : mux2x6 port map(s_c0, s_c1, s_sel, s_z);
-    u_demux2x6 : demux2x6 port map(s_z, s_sel, s_d0, s_d1);
-    u_conversorC2EK : conversorC2EK port map(s_b, s_e, s_err);
+    u_mux2x6: mux2x6
+    port map(s_c0, s_c1, s_sel, s_z);
+    
+    u_demux2x6: demux2x6
+    port map(s_z, s_sel, s_d0, s_d1);
+    
+    u_conversor: conversor
+    port map(s_b, s_e, s_err);
 
     s_c0(4 downto 0) <= s_b;    -- std_logics bin c2
     s_c0(5) <= '0';             -- std_logic error
 
     s_c1(4 downto 0) <= s_e;    -- std_logics ek
     s_c1(5) <= s_err;           -- std_logic error
-
-    s_out_C2  <= s_d0(4 downto 0);
-    s_out_sig <= s_d0(5);
-
-    s_out_ek  <= s_d1(4 downto 0);
-    s_out_err <= s_d1(5);
 
     -- testes (envio dos sinais às portas)
     u_teste : process
@@ -81,7 +76,7 @@ begin
         s_sel <= '0';
         wait for 10 ns;
 
-        -- Exemplo 2: ERRO -> saída XXXXX
+        -- Exemplo 2: ERRO
         s_b   <= "10000";
         s_sel <= '1';
         wait for 10 ns;

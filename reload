@@ -1,0 +1,3 @@
+#!/usr/bin/bash
+ghdl -a *.vhdl
+ghdl -r tb_conversor --stop-time=60ns --wave=tb_conversor.ghw

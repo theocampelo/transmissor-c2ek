@@ -10,7 +10,7 @@ entity mux2x6 is
     );
 end entity;
 
-architecture a_mux2x6 of mux2x6 is
+architecture comp of mux2x6 is
 begin
     z <= c0 when sel = '0' else c1;
 end architecture;

@@ -1,0 +1,13 @@
+v 4
+file . "tb_conversor.vhdl" "114aa72e6e631755facda89e8b83344b048dfcf5" "20221219221359.805":
+  entity tb_conversor at 1( 0) + 0 on 49;
+  architecture test of tb_conversor at 7( 80) + 0 on 50;
+file . "mux2x6.vhdl" "3d3175ad6471e4b3a2bf7fb07d6da07403ceb8d8" "20221219221359.804":
+  entity mux2x6 at 1( 0) + 0 on 47;
+  architecture comp of mux2x6 at 13( 263) + 0 on 48;
+file . "demux2x6.vhdl" "b4192640d5b98f130553c10c4ba536f73976c338" "20221219221359.803":
+  entity demux2x6 at 1( 0) + 0 on 45;
+  architecture comp of demux2x6 at 13( 265) + 0 on 46;
+file . "conversor.vhdl" "6f4753f9b2f5545a6e1d3a6418a714bd3c9aaa18" "20221219221359.803":
+  entity conversor at 1( 0) + 0 on 43;
+  architecture comp of conversor at 12( 218) + 0 on 44;
